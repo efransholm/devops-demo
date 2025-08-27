@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { DatePicker } from '@mui/x-date-pickers';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
+import styled from '@emotion/styled';
 
 function App() {
-  const [count, setCount] = useState(0)
+  dayjs.extend(weekOfYear);
+
+  const date = dayjs();
+  const currentWeek = date.week();
+  const [week, setWeek] = useState(currentWeek);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Container>
+      <Title>Find out which week your date belongs to</Title>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker label='Basic date picker' value={date} />
+        <div>WEEK: {week}</div>
+      </LocalizationProvider>
+    </Container>
+  );
 }
 
-export default App
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 30px;
+`;
+
+const Title = styled.h1`
+  font-size: 50px;
+  max-width: 600px;
+`;
+
+export default App;
