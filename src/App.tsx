@@ -33,7 +33,7 @@ function App() {
           <StyledButton
             onClick={() => {
               const newDate = decreaseDate(chosenDate);
-              newDate && setChosenDate(newDate);
+              if (newDate) setChosenDate(newDate);
             }}
           >
             -
@@ -46,7 +46,7 @@ function App() {
           <StyledButton
             onClick={() => {
               const newDate = increaseDate(chosenDate);
-              newDate && setChosenDate(newDate);
+              if (newDate) setChosenDate(newDate);
             }}
           >
             +
