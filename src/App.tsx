@@ -9,8 +9,6 @@ import updateLocale from 'dayjs/plugin/updateLocale';
 import isoWeek from 'dayjs/plugin/isoWeek';
 
 function App() {
-  const some = '';
-
   dayjs.extend(weekOfYear);
   dayjs.extend(isoWeek);
   dayjs.extend(updateLocale);
