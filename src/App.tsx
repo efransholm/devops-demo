@@ -63,7 +63,7 @@ function App() {
 }
 
 export function decreaseDate(newDate: dayjs.Dayjs) {
-  if (newDate) return newDate.subtract(1, 'day');
+  if (newDate) return newDate.subtract(0, 'day');
 }
 
 export function increaseDate(newDate: dayjs.Dayjs) {
