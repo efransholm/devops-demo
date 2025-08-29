@@ -1,1 +1,9 @@
 npm run lint
+
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+  echo "❌ Lint failed -> push aborted."
+  exit 1
+else
+  echo "✅ Lint passed -> proceeding with push..."
+fi
