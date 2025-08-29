@@ -1,4 +1,4 @@
-npm run lint
+npx eslint "src/**/*.{ts,tsx}" 
 
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
