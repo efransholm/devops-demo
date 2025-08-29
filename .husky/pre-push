@@ -1,6 +1,9 @@
+set +e
 npx eslint "src/**/*.{ts,tsx}" 
 
 RESULT=$?
+set -e
+
 if [ $RESULT -ne 0 ]; then
   echo "❌ Lint failed -> push aborted."
   exit 1
