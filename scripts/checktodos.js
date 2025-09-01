@@ -12,5 +12,5 @@ files.forEach((file) => {
   }
 });
 
-console.log('is running check for comments');
+console.log('is running check for comments, hastodo: ', hasTodo);
 if (hasTodo) process.exit(1);
