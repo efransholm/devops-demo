@@ -3,6 +3,8 @@ import { existsSync, readFileSync } from 'fs';
 let hasTodo = false;
 const files = process.argv.slice(2);
 
+console.log('checking files: ', files.length);
+
 files.forEach((file) => {
   if (!existsSync(file)) return;
   const content = readFileSync(file, 'utf8');
