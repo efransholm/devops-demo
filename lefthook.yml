@@ -7,7 +7,7 @@ pre-push:
   jobs:
     - name: linting
       run: |
-        eslint . && echo "✅ Linting passed!" || (echo "❌ Linting failed! Push blocked." && exit 1)
+        npm run lint && echo "✅ Linting passed!" || (echo "❌ Linting failed! Push blocked." && exit 1)
 #
 #     - name: gems audit
 #       tags:
