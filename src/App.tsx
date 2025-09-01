@@ -23,6 +23,7 @@ function App() {
   useEffect(() => {
     if (chosenDate?.isoWeek() === 53) setEasterEggMessage('You unlocked the secret week 👀');
     else if (chosenDate?.isoWeek() === 1) setEasterEggMessage('💅🏻 A new beginning... 💅🏻');
+    else setEasterEggMessage(null);
   }, [chosenDate]);
 
   return (
