@@ -11,4 +11,4 @@ pre-commit:
       run: |
         npm test && echo "✅ All tests passed!" || (echo "❌ Tests failed! Commit blocked." && exit 1)
     - name: comments
-      run: node scripts/checktodos.js
+      run: node scripts/checktodos.js && echo "✅ No excessive comments" || (echo "❌ Remove TODO comments" && exit 1)
