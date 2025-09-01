@@ -6,6 +6,7 @@ const files = process.argv.slice(2);
 files.forEach((file) => {
   if (!existsSync(file)) return;
   const content = readFileSync(file, 'utf8');
+  console.log('checking content: ', content);
   if (/\/\/ *to-?do/i.test(content)) {
     console.error(`❌ TODO found in ${file}`);
     hasTodo = true;
