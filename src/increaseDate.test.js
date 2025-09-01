@@ -8,7 +8,6 @@ beforeAll(() => {
 });
 
 test('decreaseDate', () => {
-  const test = 'null';
   const testDate = dayjs('2025-08-29');
   const increasedDate = increaseDate(testDate);
   expect(increasedDate.isSame(dayjs('2025-08-30'))).toBe(true);
