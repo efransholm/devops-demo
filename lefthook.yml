@@ -17,4 +17,4 @@ commit-msg:
   parallel: false
   jobs:
     - name: commit message lint
-      run: node scripts/checkCommitMsg.js {1} && echo "✅ Commit message is valid!" || (echo "❌ Invalid commit message! Commit blocked." && exit 1)
+      run: node scripts/checkCommitMsg.js {1}

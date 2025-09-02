@@ -3,17 +3,13 @@ import { existsSync, readFileSync } from 'fs';
 let hasTodo = false;
 const files = process.argv.slice(2);
 
-console.log('checking files: ', files.length);
-
 files.forEach((file) => {
   if (!existsSync(file)) return;
   const content = readFileSync(file, 'utf8');
-  console.log('checking content: ', content);
   if (/\/\/ *to-?do/i.test(content)) {
     console.error(`❌ TODO found in ${file}`);
     hasTodo = true;
   }
 });
 
-console.log('is running check for comments, hastodo: ', hasTodo);
 if (hasTodo) process.exit(1);
