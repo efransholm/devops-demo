@@ -1,0 +1,20 @@
+pre-push:
+  jobs:
+    - name: linting
+      run: |
+        npm run lint && echo "✅ Linting passed!" || (echo "❌ Linting failed! Push blocked." && exit 1)
+
+pre-commit:
+  parallel: false
+  jobs:
+    - name: testing
+      run: |
+        npm test && echo "✅ All tests passed!" || (echo "❌ Tests failed! Commit blocked." && exit 1)
+    - name: comments
+      run: node scripts/checktodos.js {staged_files} && echo "✅ No excessive comments" || (echo "❌ Remove TODO comments" && exit 1)
+
+commit-msg:
+  parallel: false
+  jobs:
+    - name: commit message lint
+      run: node scripts/checkCommitMsg.js {1}
