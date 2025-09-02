@@ -12,3 +12,9 @@ pre-commit:
         npm test && echo "✅ All tests passed!" || (echo "❌ Tests failed! Commit blocked." && exit 1)
     - name: comments
       run: node scripts/checktodos.js {staged_files} && echo "✅ No excessive comments" || (echo "❌ Remove TODO comments" && exit 1)
+
+commit-msg:
+  parallel: false
+  jobs:
+    - name: commit message lint
+      run: node scripts/checkCommitMsg.js {1} && echo "✅ Commit message is valid!" || (echo "❌ Invalid commit message! Commit blocked." && exit 1)
