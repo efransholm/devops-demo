@@ -28,10 +28,6 @@ function App() {
     else setEasterEggMessage(null);
   }, [chosenDate]);
 
-  function reset() {
-    setChosenDate(currentDate);
-  }
-
   return (
     <Container>
       <Title>Find out which week your date belongs to</Title>
