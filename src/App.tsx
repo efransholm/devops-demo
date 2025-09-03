@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import { DatePicker } from '@mui/x-date-pickers';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
-import weekOfYear from 'dayjs/plugin/weekOfYear';
-import styled from '@emotion/styled';
-import updateLocale from 'dayjs/plugin/updateLocale';
-import isoWeek from 'dayjs/plugin/isoWeek';
+import { useState, useEffect } from "react";
+import { DatePicker } from "@mui/x-date-pickers";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs from "dayjs";
+import weekOfYear from "dayjs/plugin/weekOfYear";
+import styled from "@emotion/styled";
+import updateLocale from "dayjs/plugin/updateLocale";
+import isoWeek from "dayjs/plugin/isoWeek";
 
 function App() {
   dayjs.extend(weekOfYear);
   dayjs.extend(isoWeek);
   dayjs.extend(updateLocale);
-  dayjs.updateLocale('en', {
+  dayjs.updateLocale("en", {
     weekStart: 1,
   });
 
@@ -21,10 +21,16 @@ function App() {
   const [easterEggMessage, setEasterEggMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    if (chosenDate?.isoWeek() === 53) setEasterEggMessage('You unlocked the secret week 👀');
-    else if (chosenDate?.isoWeek() === 1) setEasterEggMessage('💅🏻 A new beginning... 💅🏻');
+    if (chosenDate?.isoWeek() === 53)
+      setEasterEggMessage("You unlocked the secret week 👀");
+    else if (chosenDate?.isoWeek() === 1)
+      setEasterEggMessage("💅🏻 A new beginning... 💅🏻");
     else setEasterEggMessage(null);
   }, [chosenDate]);
+
+  function reset() {
+    setChosenDate(currentDate);
+  }
 
   return (
     <Container>
@@ -40,7 +46,7 @@ function App() {
             -
           </StyledButton>
           <DatePicker
-            label='Basic date picker'
+            label="Basic date picker"
             onChange={(newDate) => newDate && setChosenDate(newDate)}
             value={chosenDate}
           />
@@ -54,7 +60,9 @@ function App() {
           </StyledButton>
         </DateContainer>
         <div>
-          {chosenDate ? `The date ${chosenDate.format('YYYY-MM-DD')} belongs to week:` : 'Please select a date.'}
+          {chosenDate
+            ? `The date ${chosenDate.format("YYYY-MM-DD")} belongs to week:`
+            : "Please select a date."}
           {chosenDate && <Week>{chosenDate.isoWeek()}</Week>}
         </div>
         <div>{easterEggMessage}</div>
@@ -64,11 +72,11 @@ function App() {
 }
 
 export function decreaseDate(newDate: dayjs.Dayjs) {
-  if (newDate) return newDate.subtract(1, 'day');
+  if (newDate) return newDate.subtract(1, "day");
 }
 
 export function increaseDate(newDate: dayjs.Dayjs) {
-  if (newDate) return newDate.add(1, 'day');
+  if (newDate) return newDate.add(1, "day");
 }
 
 const Container = styled.div`
