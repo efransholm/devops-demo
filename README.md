@@ -1,6 +1,6 @@
 # Get week by date app
 
-This is a simple react web app that displays the week of a given date with a reset button.
+This is a simple react web app that displays the week of a given date with.
 
 ## Running the app
 
